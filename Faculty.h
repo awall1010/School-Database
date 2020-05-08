@@ -19,6 +19,8 @@ public:
   Faculty();
   Faculty(string name, int ID, string level, string department, DoublyLinkedList<Student> *advisees);
   ~Faculty();
+
+  void printStats();
 };
 
 Faculty::Faculty(){
@@ -31,5 +33,17 @@ Faculty::Faculty(string name, int ID, string level, string department, DoublyLin
   m_level=level;
   m_department = department;
   m_advisees = advisees;
+}
+
+Faculty::~Faculty(){
+  
+}
+
+
+void Faculty::printStats(){
+  cout<<"Name: "<<m_name<<endl;
+  cout<<"ID: "<<m_ID<<endl;
+  cout<<"Level: "<<m_level<<endl;
+  cout<<"Department: "<<m_department<<endl;
 }
 #endif

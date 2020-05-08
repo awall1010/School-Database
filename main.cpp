@@ -1,19 +1,29 @@
 #include "Student.h"
 #include "Faculty.h"
 #include "BST.h"
+#include "DataBase.h"
 
 
 int main(int argc, char const *argv[]) {
-  // Student *Aidan = new Student("Aidan",2317537,"Sophomore","Computer Science",3.4,1111);
+  Student Aidan("Aidan",2317537,"Sophomore","Computer Science",3.4,1111);
+  Student Noah("Noah", 233675,"Junior","Data Analytics", 3.7,1234);
   // DoublyLinkedList<Student> *none = new DoublyLinkedList<Student>();
   // Faculty *Rene = new Faculty("Rene", 11111,"Big Professor","Computer Science", none);
-  BST<int> *st = new BST<int>();
-  st->insert(0, 1);
-  st->insert(1, 2);
-  st->insert(2, 3);
-  // TreeNode<int>* root = new TreeNode<int>();
-  st->printTree(st->root);
-
+  // BST<Student>* st = new BST<Student>();
+  // st->insert(0, *Aidan);
+  // Aidan->printStudent();
+  // st->insert(1, 2);
+  // st->deleteNode(1);
+  // st->insert(2, 3);
+  // st->printTree(st->root);
+  DataBase db = DataBase();
+  // db.addStudent(*Aidan);
+  db.addStudent(Noah);
+  db.addStudent(Aidan);
+  db.printStudents();
+  db.deleteStudent(2317537);
+  // db.printStudents();
+  db.printStudentFromID(233675);
   return 0;
 }
 

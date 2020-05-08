@@ -18,6 +18,7 @@ public:
   Student();
   ~Student();
   Student(string name, int ID, string level, string major, double GPA, int advisorID);
+  void printStats();
 };
 
 Student::Student(){
@@ -43,6 +44,16 @@ Student::~Student(){
 
 }
 
+void Student::printStats(){
+  cout<<endl;
+  cout<<"Name: "<<m_name<<endl;
+  cout<<"ID: "<<m_ID<<endl;
+  cout<<"Level: "<<m_level<<endl;
+  cout<<"Major: "<<m_major<<endl;
+  cout<<"GPA: "<<m_GPA<<endl;
+  cout<<"Advisor ID: "<<m_advisorID<<endl;
+  cout<<endl;
+}
 
 
 

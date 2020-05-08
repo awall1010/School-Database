@@ -1,3 +1,6 @@
+#ifndef BST_H
+#define BST_H
+
 #include <iostream>
 #include <stdexcept>
 #include "TreeNode.h"
@@ -22,6 +25,7 @@ public:
 
 
   void printTree(TreeNode<T> *node);
+  void printFromKey(int key);
 
 
 };
@@ -34,7 +38,7 @@ BST<T>::BST(){
 
 template <class T>
 BST<T>::~BST(){
-  
+
 }
 
 template <class T>
@@ -75,7 +79,7 @@ void BST<T>::printTree(TreeNode<T> *node){
     return;
   }
   printTree(node->left);
-  cout<<node->data<<endl;
+  node->data.printStats();
   printTree(node->right);
 }
 
@@ -88,7 +92,7 @@ void BST<T>::insert(int key, T val){
   }
   else{
 
-    TreeNode<T> *curr = root; //start at the root
+    TreeNode<T> *curr = root; //we need to start at the root
     TreeNode<T> *parent;
     while(true){
       parent = curr;
@@ -114,7 +118,7 @@ void BST<T>::insert(int key, T val){
 
 
 template <class T>
-bool BST<T>::search(int place){
+bool BST<T>::search(int place){ //search function
   if(isEmpty()){
     return false;
   }
@@ -139,7 +143,7 @@ bool BST<T>::search(int place){
 
 
 template <class T>
-bool BST<T>::deleteNode(int k){
+bool BST<T>::deleteNode(int k){ //delete node
   if(isEmpty()){
     return false;
   }
@@ -165,16 +169,15 @@ bool BST<T>::deleteNode(int k){
 
 
   }
-  if(curr->left == NULL && curr->right == NULL) {
-  //then we have a leaf TreeNode
-  //have to determine if left or right and if root nodee
+  if(curr->left == NULL && curr->right == NULL) { //then it is a leaf
+
   if(curr == root)
     root = NULL;
-  else if (isLeft){
+  else if (isLeft){ //if it  is Left
     parent->left = NULL;
   }
 
-  else{
+  else{ //if its right
     parent->right = NULL;
   }
 
@@ -191,25 +194,24 @@ else if(curr->right == NULL) //no right child, so must have left child
       parent->right = curr->left;
     }
 
-      //node we are deleting has a child thats a left child
-      //this else if determines position of node to be deleted
+
   }
 
-  else if(curr->left == NULL) //no right child, so must have left child
+  else if(curr->left == NULL) //no right child so left
 {
-  //these branching statements identify position of node to be deleted
+
   if(curr == root)
     root = curr->left;
   else if(isLeft)
     parent->left = curr->right;
   else
     parent->right = curr->right;
-    //node we are deleting has a child thats a left child
+
  }
 
- else{
-     //the node to be deleted has two children
-     //at this point we being to cry and bang our heads while listening to music
+ else{ //two children
+
+
 
      TreeNode<T> *successor = getSuccessor(curr);
 
@@ -226,7 +228,7 @@ else if(curr->right == NULL) //no right child, so must have left child
      }
 
 
-     //connect/link successor to current's (D) left child
+
      successor->left = curr->left;
 
      return true;
@@ -240,7 +242,7 @@ else if(curr->right == NULL) //no right child, so must have left child
 
 template <class T>
 TreeNode<T>* BST<T>::getSuccessor(TreeNode<T> *d) {
-  //the parameter d represents the node to be deleted
+
   TreeNode<T> *curr = d->right;
   TreeNode<T> *succPar = d; //successor parent
   TreeNode<T> *successor = d;
@@ -256,3 +258,26 @@ TreeNode<T>* BST<T>::getSuccessor(TreeNode<T> *d) {
   }
   return successor;
 }
+
+template <class T>
+void BST<T>::printFromKey(int k){
+  TreeNode<T> *curr = root; 
+
+  while(curr->key != k){
+    if(k<curr->key){
+      curr = curr->left;
+    }
+    else{
+      curr = curr->right;
+    }
+    if(curr == NULL){
+      cout<<"no matching value. "<<endl;
+    }
+  }
+  curr->data.printStats();
+
+
+}
+
+
+#endif
