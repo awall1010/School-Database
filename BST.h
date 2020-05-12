@@ -26,6 +26,7 @@ public:
 
   void printTree(TreeNode<T> *node);
   void printFromKey(int key);
+  Student returnFromKey(int key);
 
 
 };
@@ -261,7 +262,7 @@ TreeNode<T>* BST<T>::getSuccessor(TreeNode<T> *d) {
 
 template <class T>
 void BST<T>::printFromKey(int k){
-  TreeNode<T> *curr = root; 
+  TreeNode<T> *curr = root;
 
   while(curr->key != k){
     if(k<curr->key){
@@ -275,9 +276,22 @@ void BST<T>::printFromKey(int k){
     }
   }
   curr->data.printStats();
-
-
 }
 
-
+template <class T>
+Student BST<T>::returnFromKey(int k){
+  TreeNode<T> *curr = root;
+  while(curr->key != k){
+    if(k<curr->key){
+      curr = curr->left;
+    }
+    else{
+      curr = curr->right;
+    }
+    if(curr == NULL){
+      cout<<"no matching value. "<<endl;
+    }
+  }
+  return curr->data;
+}
 #endif

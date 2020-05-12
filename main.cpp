@@ -20,10 +20,12 @@ int main(int argc, char const *argv[]) {
   // db.addStudent(*Aidan);
   db.addStudent(Noah);
   db.addStudent(Aidan);
-  db.printStudents();
-  db.deleteStudent(2317537);
+  // db.addStudent();
   // db.printStudents();
-  db.printStudentFromID(233675);
+  // db.deleteStudent(2317537);
+  // db.printStudents();
+  // db.printStudentFromID(233675);
+  db.runDB();
   return 0;
 }
 
