@@ -19,6 +19,9 @@ public:
   ~Student();
   Student(string name, int ID, string level, string major, double GPA, int advisorID);
   void printStats();
+  void setAdvisor(int newID);
+  int getAdvisor();
+
 };
 
 Student::Student(){
@@ -53,6 +56,14 @@ void Student::printStats(){
   cout<<"GPA: "<<m_GPA<<endl;
   cout<<"Advisor ID: "<<m_advisorID<<endl;
   cout<<endl;
+}
+void Student::setAdvisor(int newID){
+  cout<<"updating advisor ID to: "<<newID<<endl;
+  m_advisorID = newID;
+  // cout<<m_advisorID<<endl;
+}
+int Student::getAdvisor(){
+  return m_advisorID;
 }
 
 

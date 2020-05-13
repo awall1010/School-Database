@@ -5,27 +5,27 @@
 
 
 int main(int argc, char const *argv[]) {
-  Student Aidan("Aidan",2317537,"Sophomore","Computer Science",3.4,1111);
-  Student Noah("Noah", 233675,"Junior","Data Analytics", 3.7,1234);
-  // DoublyLinkedList<Student> *none = new DoublyLinkedList<Student>();
-  // Faculty *Rene = new Faculty("Rene", 11111,"Big Professor","Computer Science", none);
-  // BST<Student>* st = new BST<Student>();
-  // st->insert(0, *Aidan);
-  // Aidan->printStudent();
-  // st->insert(1, 2);
-  // st->deleteNode(1);
-  // st->insert(2, 3);
-  // st->printTree(st->root);
   DataBase db = DataBase();
-  // db.addStudent(*Aidan);
-  db.addStudent(Noah);
-  db.addStudent(Aidan);
-  // db.addStudent();
-  // db.printStudents();
-  // db.deleteStudent(2317537);
-  // db.printStudents();
-  // db.printStudentFromID(233675);
   db.runDB();
+
+
+  
+  // Student Aidan("Aidan",2317537,"Sophomore","Computer Science",3.4,223344);
+  // Student Noah("Noah", 233675,"Junior","Data Analytics", 3.7,223344);
+  // DoublyLinkedList<int> *students = new DoublyLinkedList<int>();
+  // students->insertBack(2317537);
+  // students->insertBack(233675);
+  //
+  // Faculty Rene("Rene",223344,"Associate", "Computer Science",students);
+  // db.addStudent(Noah);
+  // db.addStudent(Aidan);
+  // db.addFac(Rene);
+  // DataBase db = DataBase();
+
+  // db.writeStudents(Aidan);
+  // db.writeFaculty(Rene);
+
+
   return 0;
 }
 

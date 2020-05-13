@@ -14,20 +14,21 @@ public:
   string m_level;
   string m_department;
   // double m_GPA;
-  DoublyLinkedList<Student> *m_advisees = new DoublyLinkedList<Student>();
-
+  // DoublyLinkedList<Student> *m_advisees = new DoublyLinkedList<Student>();
+  DoublyLinkedList<int> *m_advisees = new DoublyLinkedList<int>();
   Faculty();
-  Faculty(string name, int ID, string level, string department, DoublyLinkedList<Student> *advisees);
+  Faculty(string name, int ID, string level, string department, DoublyLinkedList<int> *advisees);
   ~Faculty();
 
   void printStats();
+  void removeAdvisee(int ID);
 };
 
 Faculty::Faculty(){
 
 }
 
-Faculty::Faculty(string name, int ID, string level, string department, DoublyLinkedList<Student> *advisees ){
+Faculty::Faculty(string name, int ID, string level, string department, DoublyLinkedList<int>* advisees ){
   m_name = name;
   m_ID = ID;
   m_level=level;
@@ -36,7 +37,7 @@ Faculty::Faculty(string name, int ID, string level, string department, DoublyLin
 }
 
 Faculty::~Faculty(){
-  
+
 }
 
 
@@ -45,5 +46,16 @@ void Faculty::printStats(){
   cout<<"ID: "<<m_ID<<endl;
   cout<<"Level: "<<m_level<<endl;
   cout<<"Department: "<<m_department<<endl;
+  cout<<"Student Advisee ID's: "<<endl;
+  m_advisees->printList();
+  cout<<endl;
 }
+
+void Faculty::removeAdvisee(int ID){
+  cout<<"Entering the function. "<<endl;
+  m_advisees->removeAtPos(ID);
+  cout<<"advisee removed. "<<endl;
+}
+
+
 #endif

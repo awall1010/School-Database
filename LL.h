@@ -28,7 +28,7 @@ public:
   T removeBack();
   T removeFront();
   T search(T val); //will return value or position of node depending on implementation
-  T removeAtPos(T pos);
+  void removeAtPos(T pos);
   T viewFront();
 
 
@@ -164,57 +164,49 @@ T DoublyLinkedList<T>::search(T value){
   return position;
 }
 
-
-
-// template<class T>
-// class ListNode{
-// public:
-//   T data;
-//   ListNode *next;
-//   ListNode *prev;
-//
-//   ListNode();//my deffault constructor
-//   ListNode(T d);//overload constructor
-//
-//   ~ListNode();
-// };
-//
-// template<class T>
-// ListNode<T>::ListNode(){
-//   T data;
-//   ListNode *next;
-//   ListNode *prev;
-// }
-//
-// template<class T>
-// ListNode<T>::ListNode(T d){
-//   // data;
-//   data = d;
-//   ListNode *next;
-//   ListNode *prev;
-// }
-//
-//
-// template<class T>
-// ListNode<T>::~ListNode(){
-//
-// }
+template <class T>
+void DoublyLinkedList<T>::removeAtPos(T value){
+  // cout<<"IN LL"<<endl;
+  ListNode<T> *curr = front;
+  // cout<<"Node Created"<<endl;
+  while(curr->data !=value){
+    //iterate and attempt to find value
+    curr = curr->next;
+    if (curr==NULL){
+      // position = -1; //means we iterated all the way through and didnt find it.
+      cout<<"KEY NOT FOUND."<<endl;
+    }
+  }
+  // cout<<"FOUND DATA: "<< curr->data<<endl;
+  // if (curr==NULL){
+  //   // position = -1; //means we iterated all the way through and didnt find it.
+  // }
 
 
 
-///ListNode implementation file(.cpp)
-// ListNode::ListNode(){
-//   data = 0;
-//   next = NULL
-// }
-//
-// ListNode::ListNode(int d){
-//   data = d;
-//   next = NULL;
-// }
-//
-// ListNode::~ListNode(){
-// //do some research
-// //aka build some character
-// }
+  if(curr!=back){
+    curr->next->prev = curr->prev;
+    // cout<<"update 1"<<endl;
+  }
+  // curr->next->prev = curr->prev;
+  // cout<<"update 1"<<endl;
+  if(curr != front){
+    curr->prev->next = curr->next;
+    // cout<<"update 2"<<endl;
+  }
+  // curr->prev->next = curr->next;
+  // cout<<"update 2"<<endl;
+  curr->next = NULL;
+  // cout<<"set null 1"<<endl;
+  curr->prev = NULL;
+  // cout<<"set null 2"<<endl;
+  delete curr;
+  // cout<<"delete curr"<<endl;
+
+  size--;
+
+
+}
+
+
 #endif

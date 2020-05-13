@@ -27,6 +27,7 @@ public:
   void printTree(TreeNode<T> *node);
   void printFromKey(int key);
   Student returnFromKey(int key);
+  Faculty returnFacKey(int key);
 
 
 };
@@ -294,4 +295,25 @@ Student BST<T>::returnFromKey(int k){
   }
   return curr->data;
 }
+
+template <class T>
+Faculty BST<T>::returnFacKey(int k){
+  // cout<<"ENTERING RETURNFACKEY"<<endl;
+  TreeNode<T> *curr = root;
+  while(curr->key != k){
+    if(k<curr->key){
+      curr = curr->left;
+    }
+    else{
+      curr = curr->right;
+    }
+    if(curr == NULL){
+      cout<<"no matching value. "<<endl;
+    }
+  }
+  // cout<<"EXITING RETURN FAC "<<endl;
+  return curr->data;
+  // cout<<"returned DATA"<<endl;
+}
+
 #endif
